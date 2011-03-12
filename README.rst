@@ -1,3 +1,5 @@
+This is just a roughed-up version of the original; I've removed the parts I didn't understand and caused it to make fewer assumptions. You'll probably be happier with https://github.com/camptocamp/puppet-subversion
+
 The subversion module provides a ``subversion`` class and a
 ``working-copy`` definition. It has only been tested on Debian Etch.
 
