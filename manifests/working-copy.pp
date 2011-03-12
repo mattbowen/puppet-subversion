@@ -8,8 +8,8 @@ define subversion::working-copy($repo_base, $path, $branch = "trunk", $svn_ssh =
   }
 
   $repourl = $branch ? {
-    trunk   => "svn+ssh://$repo_base/$name/trunk",
-    default => "svn+ssh://$repo_base/$name/$branch"
+    trunk   => "http://$repo_base/$name/trunk",
+    default => "http://$repo_base/$name/$branch"
   }
 
   $svncmd = "/usr/bin/svn co --non-interactive $repourl ."
@@ -41,7 +41,7 @@ define subversion::working-copy($repo_base, $path, $branch = "trunk", $svn_ssh =
       false => undef,
       default => "SVN_SSH=$svn_ssh"
     },
-    onlyif => '/usr/bin/test `/usr/bin/svn status -uv --non-interactive --xml | /usr/bin/xmlstarlet sel -t -v "count(/status/target/entry/repos-status)"` -gt 0',
+#    onlyif => '/usr/bin/test `/usr/bin/svn status -uv --non-interactive --xml | /usr/bin/xmlstarlet sel -t -v "count(/status/target/entry/repos-status)"` -gt 0',
     cwd => $path,
     logoutput => on_failure;
   }
