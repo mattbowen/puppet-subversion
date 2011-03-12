@@ -9,7 +9,7 @@ define subversion::working-copy($repo_base, $path, $branch = "trunk", $svn_ssh =
 
   $repourl = $branch ? {
     trunk   => "svn+ssh://$repo_base/$name/trunk",
-    default => "svn+ssh://$repo_base/$name/branches/$branch"
+    default => "svn+ssh://$repo_base/$name/$branch"
   }
 
   $svncmd = "/usr/bin/svn co --non-interactive $repourl ."
